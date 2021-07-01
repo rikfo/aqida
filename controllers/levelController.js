@@ -1,5 +1,5 @@
-import catchAsync from '../utils/catchAsync.js';
-import Level from '../models/levelModel';
+import { catchAsync } from '../utils/catchAsync.js';
+import Level from '../models/levelModel.js';
 
 // const getLevel = catchAsync(async (req, res) => {
 //   const level = Level.findById({ id: req.user.level });

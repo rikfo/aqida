@@ -1,7 +1,7 @@
 import express from 'express';
 
 import * as authController from '../controllers/authController.js';
-import * as questionController from '../controllers/questionsController';
+import * as questionController from '../controllers/questionsController.js';
 
 const router = express.Router();
 

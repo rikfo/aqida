@@ -1,6 +1,6 @@
 import express from 'express';
 import Student from '../models/studentModel.js';
-import catchAsync from '../utils/catchAsync.js';
+import { catchAsync } from '../utils/catchAsync.js';
 
 const getAllStudents = catchAync(async (req, res) => {
   const students = await Student.find();
