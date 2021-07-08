@@ -23,6 +23,12 @@ const levelSchema = new mongoose.Schema({
   },
 });
 
+levelSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'questions',
+  });
+});
+
 const Level = mongoose.model('Level', levelSchema);
 
 export default Level;
