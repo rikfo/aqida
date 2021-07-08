@@ -58,6 +58,7 @@ const studentSchema = new mongoose.Schema({
   level: {
     type: mongoose.Schema.ObjectId,
     ref: 'Level',
+    default: '60e71c242ddb18684759a780',
   },
   active: {
     type: Boolean,
