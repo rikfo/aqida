@@ -27,6 +27,7 @@ levelSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'questions',
   });
+  next();
 });
 
 const Level = mongoose.model('Level', levelSchema);
