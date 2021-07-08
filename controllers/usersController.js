@@ -2,7 +2,7 @@ import express from 'express';
 import Student from '../models/studentModel.js';
 import { catchAsync } from '../utils/catchAsync.js';
 
-const getAllStudents = catchAync(async (req, res) => {
+const getAllStudents = catchAsync(async (req, res) => {
   const students = await Student.find();
 
   res.json({
@@ -11,7 +11,7 @@ const getAllStudents = catchAync(async (req, res) => {
   });
 });
 
-const getStudentById = ctachAsync(async (req, res) => {
+const getStudentById = catchAsync(async (req, res) => {
   //1) checking if the user exists
   const student = await Student.findOne(req.params._id);
 
