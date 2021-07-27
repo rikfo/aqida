@@ -89,7 +89,7 @@ studentSchema.pre(/^find/, function (next) {
   this.find({ active: { $ne: false } });
   this.populate({
     path: 'level',
-    select: 'level completed questions',
+    select: 'level',
   });
   next();
 });

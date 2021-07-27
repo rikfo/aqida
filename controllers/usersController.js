@@ -4,7 +4,7 @@ import { catchAsync } from '../utils/catchAsync.js';
 
 const getAllStudents = catchAsync(async (req, res) => {
   const students = await Student.find();
-
+  // console.log(students[0].level.level);
   res.json({
     results: students.length,
     students,

@@ -23,12 +23,12 @@ const levelSchema = new mongoose.Schema({
   },
 });
 
-levelSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'questions',
-  });
-  next();
-});
+// levelSchema.pre(/^find/, function (next) {
+//   this.populate({
+//     path: 'questions',
+//   });
+//   next();
+// });
 
 const Level = mongoose.model('Level', levelSchema);
 

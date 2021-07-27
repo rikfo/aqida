@@ -26,4 +26,19 @@ const createLevel = catchAsync(async (req, res) => {
   });
 });
 
-export { getAllLevels, createLevel };
+const getLevelById = catchAsync(async (req, res, next) => {
+  const level = await Level.findById(req.params.id);
+  if (level.level > req.user.level.level) {
+    return next(
+      new Error(
+        'you should finish the your current level in order to reach this level'
+      )
+    );
+  }
+
+  res.json({
+    level,
+  });
+});
+
+export { getAllLevels, createLevel, getLevelById };

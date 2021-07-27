@@ -59,7 +59,7 @@ const login = catchAsync(async (req, res, next) => {
     return next(new Error('please provide an email and password!'));
   }
 
-  const student = await Student.findOne({ eamil }).select('password');
+  const student = await Student.findOne({ email }).select('password');
 
   if (!student || !(await student.checkPassword(password, student.password))) {
     return next(new Error('email or password is incorrect!'));
@@ -83,18 +83,17 @@ const protect = catchAsync(async (req, res, next) => {
 
   const decode = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
-  const freshUser = await Student.findById(decoded.id);
+  const freshUser = await Student.findById(decode.id);
   if (!freshUser) return next(new Error('the user no longer exists'));
   ///////////
-  req.user = freashUser;
+  req.user = freshUser;
   res.locals.user = freshUser;
   next();
 });
 
 const restrictTo = (level) => {
-  
   return (req, res, next) => {
-    if (level < req.user.level)
+    if (level > req.user.level)
       return next(
         new Error(
           'you should finish the your current level in order to reach this level'
@@ -104,4 +103,4 @@ const restrictTo = (level) => {
   };
 };
 
-export { login, signUp, protect };
+export { login, signUp, protect, restrictTo };
