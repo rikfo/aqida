@@ -1,0 +1,60 @@
+[
+    {
+        "id":"1",
+        "LevelNumber":"1",
+        "Image":"/images/level1.jpg",
+        "َTitle":"المستوى الأول",
+        "InFo":"في هذا الفصل يحفظ الطالب الأحاديث التي في أوله,ويحفظ الأسئلة مع أجوبتها.",
+        "LevelContents":[{
+            "Id":"1",
+            "Title":"أركان الإيمان",
+            "Lesson":{
+               "Images":["/images/level1/q1.jpg"]
+            },
+            "Test":{
+                "Type":"insert",
+                "Question":": أكتب الركن الأول و الأخير من أركان الإيمان",
+                "Choices":[],
+                "CorrectAnswer":"الله و القدر خيره وشره",
+                "UserAnswer":"",
+                "Answered":false
+            },
+            "Locked":true
+        },
+        {
+            "Id":"2",
+            "Title":"أركان الإسلام",
+            "Lesson":{
+                "Images":["/images/level1/q2.jpg"]
+            },
+            "Test":{
+                "Type":"check",
+                "Question":"ما هما الركنان الذان إذا انهدم أحدهما انهدم إسلام الشخص ؟",
+                "Choices":["الزكاة","الصلاة","الحج","الشهدتان"],
+                "CorrectAnswer":["الشهدتان","الصلاة"],
+                "UserAnswer":"",
+                "Answered":false
+            },
+            "Locked":false
+        },
+        {
+            "Id":"3",
+            "Title":"شُعَبِ الإيمان",
+            "Lesson":{
+                "Images":["/images/level1/q3.jpg"]
+            },
+            "Test":{
+                "Type":"radio",
+                "Question":"إختر من ليست ضمن شُعَبِ الإيمان ؟",
+                "Choices":["لا إله إلا الله","الصلاة","الحياء","بر الوالدين"],
+                "CorrectAnswer":["الصلاة"],
+                "UserAnswer":"",
+                "Answered":false
+            },
+            "Locked":false
+        }
+    ],
+        "Completed":false,
+        "Locked":true
+    }
+]

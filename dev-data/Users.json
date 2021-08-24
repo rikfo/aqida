@@ -1,0 +1,17 @@
+[
+     {
+         "Id":"0",
+         "StudentName":"هارون الرشيد",
+         "Email":"student@std.com",
+         "Gender":"ولد",
+         "motherLang":"العربية",
+         "PlaceOfStudy":"المغرب",
+         "Age":"7",
+         "QuranMemorizitionQt":"10",
+         "FavoriteHobby":"القراءة",
+         "AboutYou":"طالب في الابتدائية وأحب طلب العلم",
+         "Level":"1",
+         "Password":"azerty123",
+         "PasswordConf":"azerty123"
+     }
+]

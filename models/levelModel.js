@@ -7,6 +7,22 @@ const levelSchema = new mongoose.Schema({
     default: 1,
     unique: true,
   },
+  image: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  info: {
+    type: String,
+    required: true,
+  },
+  lesson: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Lesson',
+  },
   questions: [
     {
       type: mongoose.Schema.ObjectId,

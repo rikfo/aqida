@@ -33,13 +33,18 @@ const studentSchema = new mongoose.Schema({
       message: "the password didn't match!",
     },
   },
+  gender: {
+    type: String,
+    required: true,
+    enum: ['male', 'female'],
+  },
   motherLang: {
     type: String,
     required: true,
     default: 'arabic',
   },
-  birthday: {
-    type: Date,
+  age: {
+    type: Number,
     required: true,
   },
   from: {
@@ -50,7 +55,7 @@ const studentSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
-  quranMemorizitionQt: {
+  quranMemorizationQt: {
     type: Number,
     default: 0,
   },
