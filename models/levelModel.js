@@ -19,14 +19,10 @@ const levelSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  lesson: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'Lesson',
-  },
-  questions: [
+  lessons: [
     {
       type: mongoose.Schema.ObjectId,
-      ref: 'Question',
+      ref: 'Lesson',
     },
   ],
   completed: {
@@ -45,7 +41,19 @@ const levelSchema = new mongoose.Schema({
 //   });
 //   next();
 // });
+levelSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'lessons',
+  });
+  next();
+});
 
 const Level = mongoose.model('Level', levelSchema);
+
+// levelSchema.methods.checkSuccess(){
+//   if(this.lessons.every((qs) => {
+
+//   }))
+// }
 
 export default Level;

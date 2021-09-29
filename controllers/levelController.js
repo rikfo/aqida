@@ -11,7 +11,7 @@ import Level from '../models/levelModel.js';
 // });
 
 const getAllLevels = catchAsync(async (req, res) => {
-  const levels = await Level.find();
+  const levels = await Level.find({});
 
   res.json({
     results: levels.length,
@@ -37,7 +37,8 @@ const getLevelById = catchAsync(async (req, res, next) => {
       )
     );
   }
-
+  req.level = level;
+  console.log(req.level);
   res.json({
     level,
   });

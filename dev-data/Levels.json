@@ -1,60 +1,102 @@
 [
-    {
-        "id":"1",
-        "LevelNumber":"1",
-        "Image":"/images/level1.jpg",
-        "َTitle":"المستوى الأول",
-        "InFo":"في هذا الفصل يحفظ الطالب الأحاديث التي في أوله,ويحفظ الأسئلة مع أجوبتها.",
-        "LevelContents":[{
-            "Id":"1",
-            "Title":"أركان الإيمان",
-            "Lesson":{
-               "Images":["/images/level1/q1.jpg"]
-            },
-            "Test":{
-                "Type":"insert",
-                "Question":": أكتب الركن الأول و الأخير من أركان الإيمان",
-                "Choices":[],
-                "CorrectAnswer":"الله و القدر خيره وشره",
-                "UserAnswer":"",
-                "Answered":false
-            },
-            "Locked":true
+  {
+    "id": "001",
+    "level": "1",
+    "image": "https://res.cloudinary.com/aqida/image/upload/v1629555407/levels/lvl1_zwcfxq.jpg",
+    "title": "المستوى الأول",
+    "info": "في هذا الفصل يحفظ الطالب الأحاديث التي في أوله,ويحفظ الأسئلة مع أجوبتها . ",
+    "lessons": [
+      {
+        "title": "أركان الإيمان",
+        "content": {
+          "images": []
         },
-        {
-            "Id":"2",
-            "Title":"أركان الإسلام",
-            "Lesson":{
-                "Images":["/images/level1/q2.jpg"]
-            },
-            "Test":{
-                "Type":"check",
-                "Question":"ما هما الركنان الذان إذا انهدم أحدهما انهدم إسلام الشخص ؟",
-                "Choices":["الزكاة","الصلاة","الحج","الشهدتان"],
-                "CorrectAnswer":["الشهدتان","الصلاة"],
-                "UserAnswer":"",
-                "Answered":false
-            },
-            "Locked":false
+        "question": {
+          "title": ": أكتب الركن الأول و الأخير من أركان الإيمان",
+          "type": "insert",
+          "choices": [],
+          "correctAnswer": "الله و القدر خيره وشره"
         },
-        {
-            "Id":"3",
-            "Title":"شُعَبِ الإيمان",
-            "Lesson":{
-                "Images":["/images/level1/q3.jpg"]
-            },
-            "Test":{
-                "Type":"radio",
-                "Question":"إختر من ليست ضمن شُعَبِ الإيمان ؟",
-                "Choices":["لا إله إلا الله","الصلاة","الحياء","بر الوالدين"],
-                "CorrectAnswer":["الصلاة"],
-                "UserAnswer":"",
-                "Answered":false
-            },
-            "Locked":false
-        }
+        "locked": true
+      },
+      {
+        "title": "أركان الإسلام",
+        "content": {
+          "images": []
+        },
+        "question": {
+          "title": "ما هما الركنان الذان إذا انهدم أحدهما انهدم إسلام الشخص ؟",
+          "type": "check",
+          "choices": ["الزكاة", "الصلاة", "الحج", "الشهدتان"],
+          "correctAnswer": ["الشهدتان", "الصلاة"]
+        },
+        "locked": false
+      },
+      {
+        "title": "شُعَبِ الإيمان",
+        "content": {
+          "images": []
+        },
+        "question": {
+          "title": "إختر من ليست ضمن شُعَبِ الإيمان ؟",
+          "type": "radio",
+          "choices": ["لا إله إلا الله", "الصلاة", "الحياء", "بر الوالدين"],
+          "correctAnswer": ["الصلاة"]
+        },
+        "locked": false
+      }
     ],
-        "Completed":false,
-        "Locked":true
-    }
+    "completed": false,
+    "locked": true
+  },
+  {
+    "id": "002",
+    "level": "2",
+    "image": "https://res.cloudinary.com/aqida/image/upload/v1629555417/levels/lvl2_afuqro.jpg",
+    "title": "المستوى الثاني",
+    "info": "في هذا الفصل يحفظ الطالب عددا من أحاديث رسول الله صلى الله عليه وسلم في الآداب الإسلامية المتعلقة بالعادات, مع معرفة شرحها . ",
+    "lessons": [],
+    "completed": false,
+    "locked": false
+  },
+  {
+    "id": "003",
+    "level": "3",
+    "image": "https://res.cloudinary.com/aqida/image/upload/v1629555398/levels/lvl3_ctacwg.jpg",
+    "title": "المستوى الثالث",
+    "info": "في هذا الفصل يحفظ الطالب عددا من أحاديث رسول الله صلى الله عليه وسلم في الآداب الإسلامية المتعلقة بالسلوك و التعامل, مع معرفة شرحها . ",
+    "lessons": [],
+    "completed": false,
+    "locked": false
+  },
+  {
+    "id": "004",
+    "level": "4",
+    "image": "https://res.cloudinary.com/aqida/image/upload/v1629555407/levels/lvl4_fehcfu.jpg",
+    "title": "المستوى الرابع",
+    "info": "هذا الفصل من شأنه تعليم أركان الإسلام بأسلوب مبسط . ",
+    "lessons": [],
+    "completed": false,
+    "locked": false
+  },
+  {
+    "id": "005",
+    "level": "5",
+    "image": "https://res.cloudinary.com/aqida/image/upload/v1629555405/levels/lvl5_snyetm.jpg",
+    "title": "المستوى الخامس",
+    "info": "يدرس الطالب في هذا الفصل تفسير قصار السور, مع الفاتحة وآية الكرسي. كما أنه مطالب بحفظها . ",
+    "lessons": [],
+    "completed": false,
+    "locked": false
+  },
+  {
+    "id": "006",
+    "level": "6",
+    "image": "https://res.cloudinary.com/aqida/image/upload/v1629555390/levels/lvl6_wnwztq.jpg",
+    "title": "المستوى السادس",
+    "info": "ينتبه إلى أن القصص الواردة في الفصل كلها صحيح, ذكرت مصدرها قبل ايرادها, ولم أورد النص كما هو بل حاولت سرده بالمعنى لتبسيط لغته بما يتناسب مع القارئ . ",
+    "lessons": [],
+    "completed": false,
+    "locked": false
+  }
 ]

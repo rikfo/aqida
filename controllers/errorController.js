@@ -33,10 +33,14 @@ const sendErrorDev = (err, req, res) => {
       stack: err.stack,
     });
   }
-  return res.status(err.statusCode).render('error', {
-    title: '404 NOT FOUND',
+  return res.status(err.statusCode).json({
+    title: 'error',
     msg: err.message,
   });
+  // res.status(err.statusCode).render('error', {
+  //   title: '404 NOT FOUND',
+  //   msg: err.message,
+  // });
 };
 
 const sendErrorProd = (err, req, res) => {

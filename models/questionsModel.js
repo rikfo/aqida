@@ -1,36 +1,44 @@
 import mongoose from 'mongoose';
 
-// const question_tp = ['qcm', 'arrange', 'select'];
-
 const questionSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
   },
-  question: {
+  type: {
     type: String,
-    required: true,
+    enum: ['insert', 'check', 'radioButton', 'dragdrop'],
   },
-  qtype: {
-    type: String,
-    enum: ['insert', 'checkbox', 'radioButton', 'dragdrop'],
-  },
-  // qtype: {
-  //   type: String,
-  //   default: function () {
-  //     return question_tp[Math.round(Math.random * 3)];
-  //   },
-  //   enum: question_tp,
-  // },
-  answer: {
-    type: String,
-    required: true,
+  chioces: [{ type: String }],
+  correctAnswer: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
+  numberOfTries: {
+    type: Number,
+    default: 2,
   },
   answered: {
     type: Boolean,
     default: false,
   },
 });
+
+questionSchema.methods.checkAnswer = function (userAnswer) {
+  if (this.qtype === 'insert') {
+    console.log('question type is ' + this.qtype);
+    if (userAnswer === this.correctAnswer) {
+      this.answered = true;
+    } else {
+      this.numberOfTries--;
+    }
+  } else {
+    // checkAnswer method for Checkbox, radiobutton and draganddrop
+  }
+  return this.answered;
+};
 
 const Question = mongoose.model('Question', questionSchema);
 

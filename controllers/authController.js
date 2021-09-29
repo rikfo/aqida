@@ -42,7 +42,8 @@ const signUp = catchAsync(async (req, res) => {
     password: req.body.password,
     passwordConf: req.body.passwordConf,
     motherLang: req.body.motherLang,
-    birthday: req.body.birthday,
+    age: req.body.age,
+    gender: req.body.gender,
     from: req.body.from,
     quranMemorizitionQt: req.body.quranMemorizitionQt,
     hobby: req.body.hobby,
@@ -91,16 +92,4 @@ const protect = catchAsync(async (req, res, next) => {
   next();
 });
 
-const restrictTo = (level) => {
-  return (req, res, next) => {
-    if (level > req.user.level)
-      return next(
-        new Error(
-          'you should finish the your current level in order to reach this level'
-        )
-      );
-    next();
-  };
-};
-
-export { login, signUp, protect, restrictTo };
+export { login, signUp, protect };

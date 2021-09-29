@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import validator from 'validator';
 import crypto from 'crypto';
 import bcrypt from 'bcryptjs';
+import Level from './levelModel.js';
 
 const studentSchema = new mongoose.Schema({
   name: {
@@ -16,6 +17,9 @@ const studentSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
     validate: validator.isEmail,
+  },
+  image: {
+    type: String,
   },
   password: {
     type: String,
@@ -33,6 +37,9 @@ const studentSchema = new mongoose.Schema({
       message: "the password didn't match!",
     },
   },
+  passwordChangedAt: Date,
+  passwordResetToken: String,
+  passwordResetExpiration: Date,
   gender: {
     type: String,
     required: true,
@@ -64,14 +71,22 @@ const studentSchema = new mongoose.Schema({
   level: {
     type: mongoose.Schema.ObjectId,
     ref: 'Level',
-    default: '60e71c242ddb18684759a780',
   },
   active: {
     type: Boolean,
     default: true,
     select: false,
   },
+  activated: {
+    type: Boolean,
+    default: false,
+  },
 });
+
+studentSchema.methods.initializeStedentLevel = async () => {
+  const level = await Level.find({ level: 1 });
+  return level;
+};
 
 studentSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
@@ -79,10 +94,17 @@ studentSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, 12);
 
   this.passwordConf = undefined;
+
   next();
 });
 
-studentSchema.post('save', async function (next) {
+studentSchema.pre('save', async function (next) {
+  const level = await this.initializeStedentLevel();
+  this.level = level[0]._id;
+  next();
+});
+
+studentSchema.post('save', function () {
   this.populate({
     path: 'level',
     select: 'level',
