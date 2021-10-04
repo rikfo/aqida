@@ -30,6 +30,13 @@ const getLessonBySlug = catchAsync(async (req, res) => {
     path: 'questions',
   });
 
+  if (lesson.locked === true) {
+    return res.json({
+      status: 'failure',
+      message: 'عليك اتمام الدروس السابقة',
+    });
+  }
+
   console.log(lesson.checkSuccess());
 
   res.json({
