@@ -16,10 +16,11 @@ const questionSchema = new mongoose.Schema({
       required: true,
     },
   ],
-  numberOfTries: {
-    type: Number,
-    default: 2,
-  },
+  // mab9inach an7tajo hadi
+  // numberOfTries: {
+  //   type: Number,
+  //   default: 2,
+  // },
   answered: {
     type: Boolean,
     default: false,
@@ -27,14 +28,15 @@ const questionSchema = new mongoose.Schema({
 });
 
 questionSchema.methods.checkAnswer = function (userAnswer) {
-  if (this.qtype === 'insert') {
-    console.log('question type is ' + this.qtype);
-    if (userAnswer === this.correctAnswer) {
+  //hadi method dyal verification
+  if (this.type === 'insert') {
+    if (userAnswer == this.correctAnswer[0]) {
       this.answered = true;
     } else {
       this.numberOfTries--;
     }
   } else {
+    // hna atkon dik lmethod dyal dakchi lakhor
     // checkAnswer method for Checkbox, radiobutton and draganddrop
   }
   return this.answered;

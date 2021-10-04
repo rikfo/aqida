@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import arabSlug from '../utils/arabSlug.js';
-// import Question from './questionsModel.js';
 
 const lessonSchema = new mongoose.Schema({
   title: {
@@ -46,19 +45,17 @@ lessonSchema.pre('save', function (next) {
   next();
 });
 
-lessonSchema.methods.checkSuccess = function () {
-  if (
-    this.questions.every((qs) => {
-      qs.answered === true;
-    })
-  )
-    this.finished = true;
-  return this.finished;
+lessonSchema.methods.getQuestion = function () {
+  return this.questions[0];
 };
 
-// lessonSchema.methods.getQuestionByIndex = function (index) {
-//   return this.questions[index - 1];
-// };
+//method bayna ach tadir
+lessonSchema.methods.checkSuccess = function () {
+  this.finished = this.questions.every((qs) => {
+    return qs.answered === true;
+  });
+  return this.finished;
+};
 
 const Lesson = mongoose.model('Lesson', lessonSchema);
 

@@ -7,9 +7,9 @@ const router = express.Router();
 
 // router.use(auth.protect);
 router.get('/', viewController.getLevels);
-router.get('/:id', viewController.getLevelById);
-router.get('/:id/lessons/:slug', viewController.getLessonBySlug);
-router.get('/:id/lessons/:slug/:index', viewController.getQuestionById);
-router.post('/:id/lessons/:slug/:index', viewController.answerQuestion);
+router.get('/:lvl', viewController.getLevelById);
+router.get('/:lvl/lessons/:slug', viewController.getLessonBySlug);
+router.get('/:lvl/lessons/:slug/test', viewController.getQuestion);
+router.post('/:lvl/lessons/:slug/test', viewController.answerQuestion);
 
 export default router;

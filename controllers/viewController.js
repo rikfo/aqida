@@ -1,12 +1,11 @@
 import express from 'express';
-// import Student from '../models/studentModel.js';
 import Lesson from '../models/lessonModel.js';
 import Level from '../models/levelModel.js';
 import Question from '../models/questionsModel.js';
 import { catchAsync } from '../utils/catchAsync.js';
 
 // global variables :
-let numberOfTries = 2;
+let numberOfTries = 1;
 
 const getLevels = catchAsync(async (req, res) => {
   const levels = await Level.find({});
@@ -17,7 +16,7 @@ const getLevels = catchAsync(async (req, res) => {
 });
 
 const getLevelById = catchAsync(async (req, res) => {
-  const level = await Level.findById(req.params.id).populate({
+  const level = await Level.findOne({ level: req.params.lvl }).populate({
     path: 'lessons',
   });
 
@@ -25,10 +24,6 @@ const getLevelById = catchAsync(async (req, res) => {
     level,
   });
 });
-
-// const getLessonsOfLevel = catchaAsync(async (req, res) => {
-//   const lessons = await Lesson.find();
-// });
 
 const getLessonBySlug = catchAsync(async (req, res) => {
   const lesson = await Lesson.findOne({ slug: req.params.slug }).populate({
@@ -42,12 +37,10 @@ const getLessonBySlug = catchAsync(async (req, res) => {
   });
 });
 
-const getQuestionById = catchAsync(async (req, res) => {
-  // const question = await Question.find({ _id: req.params.q_id });
-  // const lesson = await Lesson.findOne({ slug: req.params.slug }).populate({
-  //   path: 'questions',
-  // });
-  const question = await Question.findOne({ _id: req.params.index });
+const getQuestion = catchAsync(async (req, res) => {
+  // const question = await Question.findOne({ _id: req.params.index });
+  const lesson = await Lesson.findOne({ slug: req.params.slug });
+  const question = lesson.getQuestion();
 
   res.json({
     question,
@@ -55,11 +48,9 @@ const getQuestionById = catchAsync(async (req, res) => {
 });
 
 const answerQuestion = catchAsync(async (req, res) => {
-  const question = await Question.findOne({ _id: req.params.index });
-
-  console.log(question.numberOfTries);
-  console.log(numberOfTries);
-
+  const lesson = await Lesson.findOne({ slug: req.params.slug });
+  const question = lesson.getQuestion();
+  // hadchi bayn hhhhh
   if (numberOfTries > 0) {
     if (!question.checkAnswer(req.body.answer)) {
       res.json({
@@ -68,6 +59,10 @@ const answerQuestion = catchAsync(async (req, res) => {
       });
       numberOfTries--;
     } else {
+      // hna dakchi li glt lik drtha b updateOne for now
+      await question.updateOne({ answered: true });
+      if (lesson.checkSuccess()) await lesson.updateOne({ finished: true });
+
       res.json({
         status: 'success',
         message: 'اخسنت',
@@ -83,7 +78,7 @@ const answerQuestion = catchAsync(async (req, res) => {
 
 export {
   getLessonBySlug,
-  getQuestionById,
+  getQuestion,
   //getLessonsOfLevel,
   getLevels,
   getLevelById,
